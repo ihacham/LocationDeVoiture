@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.ClientController">
+   <children>
+      <ImageView fx:id="returnback" fitHeight="31.0" fitWidth="33.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/back.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="212.0" layoutY="68.0" text="CodevRéservation :" />
+      <TextField fx:id="username" layoutX="320.0" layoutY="64.0" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
+      <Label fx:id="searchClient" layoutX="518.0" layoutY="67.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" onKeyPressed="#press" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <TableView fx:id="clientTable" layoutY="124.0" prefHeight="337.0" prefWidth="877.0">
+         <columns>
+            <TableColumn fx:id="code" prefWidth="53.0" text="Code" />
+            <TableColumn fx:id="nom" prefWidth="110.0" text="Nom Client" />
+            <TableColumn fx:id="prenom" prefWidth="172.0" text="Immat. Voiture" />
+            <TableColumn fx:id="adresse" prefWidth="152.0" text="N° Contrat" />
+            <TableColumn fx:id="permis" prefWidth="138.0" text="Date Réservation" />
+            <TableColumn fx:id="telephone" prefWidth="124.0" text="Date Départ" />
+            <TableColumn fx:id="age" prefWidth="127.0" text="Date Retour" />
+         </columns>
+      </TableView>
+      <Button layoutX="390.0" layoutY="531.0" mnemonicParsing="false" onAction="#showEditClient" prefHeight="31.0" prefWidth="110.0" text="Modifier" />
+      <Button layoutX="82.0" layoutY="531.0" mnemonicParsing="false" onAction="#showAddClient" prefHeight="31.0" prefWidth="110.0" text="Ajouter" />
+      <Button layoutX="695.0" layoutY="531.0" mnemonicParsing="false" onAction="#showDeleteClient" prefHeight="31.0" prefWidth="110.0" text="Supprimer" />
+   </children>
+</Pane>

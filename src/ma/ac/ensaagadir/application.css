@@ -1,0 +1,32 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.mainbutton {
+	-fx-border-color:  #3498DB;
+	-fx-border-width: 0.5;
+	-fx-border-radius: 50;
+	-fx-text-fill: #6e6e6e;
+	-fx-pref-width: 175;
+	-fx-pref-height: 40;
+	-fx-text-alignment: center;
+	-fx-alignment: center;
+	-fx-font-family: Verdana;
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+}
+
+.mainbutton:hover {
+	-fx-background-color:  #3498DB;
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-border-color:  #3498DB;
+	-fx-border-width: 0.5;
+	-fx-border-radius: 50;
+	-fx-background-radius: 50;
+}
+
+#incorrectedLogin{
+	-fx-text-fill: #fb0c0c;
+	-fx-text-alignment: center;
+	-fx-font-family: System;
+	-fx-font-style: Bold;
+}

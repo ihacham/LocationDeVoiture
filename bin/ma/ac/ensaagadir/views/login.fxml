@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1063.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.LoginController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="342.0" layoutY="323.0" prefHeight="112.0" prefWidth="377.0" spacing="10.0">
+         <children>
+         <HBox prefHeight="56.0" prefWidth="358.0" spacing="1.0">
+         <children>
+            <TextField fx:id="username" alignment="CENTER" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="359.0" promptText="nom d'utilisateur">
+               <padding>
+                  <Insets left="8.0" top="2.0" />
+               </padding>
+            </TextField>
+          </children>
+          </HBox>
+          <HBox prefHeight="56.0" prefWidth="316.0" spacing="1.0">
+         <children>
+                  <AnchorPane fx:id="passwordPane" prefHeight="41.0" prefWidth="241.0">
+                     <children>
+                        <TextField fx:id="pw" alignment="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="359.0" promptText="mot de passe">
+                           <padding>
+                              <Insets left="8.0" top="2.0" />
+                           </padding>
+                        </TextField>
+                  
+                  <PasswordField fx:id="password" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="359.0" promptText="mot de passe">
+                     <padding>
+                        <Insets left="8.0" top="2.0" />
+                     </padding>
+                  </PasswordField>
+                        <ImageView fx:id="iconPw" fitHeight="40.0" fitWidth="33.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/eye-slach.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+          </children>
+          </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="365.0" layoutY="249.0" prefHeight="40.0" prefWidth="332.0" text="Login">
+         <font>
+            <Font name="Consolas" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="connecter" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="468.0" onMouseClicked="#connect" prefHeight="40.0" prefWidth="175.0" styleClass="mainbutton" stylesheets="@../application.css" text="Se connecter" textFill="#6e6e6e">
+         <font>
+            <Font name="Verdana Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="loginavatar" fitHeight="187.0" fitWidth="229.0" layoutX="439.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/login_logo.png" />
+         </image></ImageView>
+      <ImageView fx:id="iconUser" fitHeight="33.0" fitWidth="33.0" layoutX="356.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="266.0" layoutY="346.0" text="Username :">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="269.0" layoutY="400.0" text="Password :">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="incorrectedLogin" alignment="CENTER" layoutX="354.0" layoutY="292.0" prefHeight="17.0" prefWidth="359.0" />
+   </children> 
+</Pane>

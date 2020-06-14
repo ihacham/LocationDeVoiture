@@ -1,0 +1,5 @@
+.leftButtons:hover{
+	-fx-text-fill: #3498DB;
+	-fx-border-color: #048FD8;
+	-fx-border-width : 0 0 0 2;
+}
