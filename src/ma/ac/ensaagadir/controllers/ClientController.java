@@ -96,6 +96,7 @@ public class ClientController {
 
 		clientTable.setItems(clientObservableList);
 
+		
 		session = ApplicationSessionSingleton.getInstance();
 
 		edit.setDisable(true);
@@ -109,12 +110,12 @@ public class ClientController {
 	@FXML
 	void searchClient(ActionEvent event) {
 		ArrayList<Client> clients = clientRepository.getClientByName(username.getText().trim());
+		
 		if (clients.isEmpty()) {
-			// clientInfo.setText("Client Introuvable!");
+			clientTable.setItems(FXCollections.observableArrayList());
 		} else {
-			for (Client client : clients) {
-
-			}
+			clientTable.setItems(FXCollections.observableArrayList(clients));
+			
 		}
 	}
 
@@ -190,10 +191,7 @@ public class ClientController {
 		}
 	}
 
-	@FXML
-	void press(KeyEvent event) {
-
-	}
+	
 
 	@FXML
 	private void clicked() {
