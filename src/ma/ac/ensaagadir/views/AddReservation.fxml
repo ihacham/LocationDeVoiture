@@ -26,7 +26,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="263.0" />
+                  <ComboBox fx:id="comboClient" prefHeight="25.0" prefWidth="263.0" />
                </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="381.0">
@@ -36,7 +36,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="263.0" />
+                  <ComboBox fx:id="comboVoiture" prefHeight="25.0" prefWidth="263.0" />
                </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="381.0">
@@ -46,7 +46,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <DatePicker prefHeight="25.0" prefWidth="262.0" />
+                  <DatePicker fx:id="dateReservation" prefHeight="25.0" prefWidth="262.0" />
                </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="381.0">
@@ -56,7 +56,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <DatePicker prefHeight="25.0" prefWidth="262.0" />
+                  <DatePicker fx:id="dateDepart" prefHeight="25.0" prefWidth="262.0" />
                </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="381.0">
@@ -66,7 +66,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <DatePicker prefHeight="25.0" prefWidth="262.0" />
+                  <DatePicker fx:id="dateRetour" prefHeight="25.0" prefWidth="262.0" />
                </children>
             </HBox>
          </children>
@@ -74,7 +74,7 @@
       <HBox alignment="CENTER" layoutY="436.0" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
          <children>
           <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveClient" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
-            <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Annuler" />
+            <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Réinitialiser" />
          </children>
       </HBox>
       <Line endX="161.0" layoutX="271.0" layoutY="54.0" startX="-153.0" />

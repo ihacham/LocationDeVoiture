@@ -20,7 +20,7 @@ public class ReservationRepository {
 	}
 
 	// search Reservation by codeReservation
-	public ArrayList<Reservation> getReservationByName(String codeReservation) {
+	public ArrayList<Reservation> getReservationByCode(String codeReservation) {
 		ArrayList<Reservation> Reservations = new ArrayList<>();
 		 
 		try {

@@ -148,7 +148,7 @@ public class ReservationController {
     void searchReservation(KeyEvent event) {
     	clearSearchLabel.setVisible(true);
 		searchReservation.setVisible(false);
-		ArrayList<Reservation> reservations = reservationRepository.getReservationByName(codeReservationInput.getText().trim());
+		ArrayList<Reservation> reservations = reservationRepository.getReservationByCode(codeReservationInput.getText().trim());
 		
 		if (reservations.isEmpty()) {
 			reservationObservableList.clear();
@@ -174,7 +174,7 @@ public class ReservationController {
 			addReservationStage.setResizable(false);
 			addReservationStage.show();
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
     }
 
