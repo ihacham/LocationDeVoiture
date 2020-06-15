@@ -2,9 +2,12 @@ package ma.ac.ensaagadir.models;
 
 import java.util.Date;
 
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+
 public class Voiture {
 	
-	private long numImmatriculation ;
+	private LongProperty numImmatriculation ;
 	private Parking  parking  ;
 	private String  marque ;
 	private String  type ;
@@ -23,7 +26,7 @@ public class Voiture {
 	public Voiture(long numImmatriculation, String marque, String type, String carburant,
 			double compteurDeKM, Date dateDeMiseEnCirculation) {
 		
-		this.numImmatriculation = numImmatriculation;
+		this.numImmatriculation = new SimpleLongProperty(numImmatriculation);
 		this.marque = marque;
 		this.type = type;
 		this.carburant = carburant;
@@ -33,10 +36,13 @@ public class Voiture {
 	
 	
 	public long getNumImmatriculation() {
+		return numImmatriculation.get();
+	}
+	public LongProperty NumImmatriculation() {
 		return numImmatriculation;
 	}
 	public void setNumImmatriculation(long numImmatriculation) {
-		this.numImmatriculation = numImmatriculation;
+		this.numImmatriculation =  new SimpleLongProperty(numImmatriculation);
 	}
 	public Parking getParking() {
 		return parking;

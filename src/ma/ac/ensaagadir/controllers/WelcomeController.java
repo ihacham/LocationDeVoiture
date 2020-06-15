@@ -72,7 +72,7 @@ public class WelcomeController {
 
     @FXML
     void loadViewToMainPane(MouseEvent event) {
-    	String vienName = ((Label)(event.getSource())).getText();
+    	String vienName = ((Label)(event.getSource())).getText().replace("é", "e");
     	String viewPath = "../views/" + vienName + ".fxml";
     	viewTitle.setText("Gestion " + vienName);
     	try {

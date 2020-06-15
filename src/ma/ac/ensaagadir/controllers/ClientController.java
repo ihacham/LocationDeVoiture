@@ -80,7 +80,21 @@ public class ClientController {
 
 	@FXML
 	private Button delete;
+	
+	@FXML
+	private Label clearSearchLabel;
 
+	 @FXML
+	 void clearSearch() {
+		 clearSearchLabel.setVisible(false);
+		 searchClient.setVisible(true);
+		 username.clear();
+		 System.out.println(clientRepository.getAllClients());
+		 clientObservableList.clear();
+		 clientObservableList.addAll(FXCollections.observableArrayList(clientRepository.getAllClients())); 
+		 
+	 }
+	
 	@FXML
 	private void initialize() {
 		clientRepository = new ClientRepository();
@@ -108,13 +122,18 @@ public class ClientController {
 	}
 
 	@FXML
-	void searchClient(ActionEvent event) {
+	public void searchClient() {
+		clearSearchLabel.setVisible(true);
+		searchClient.setVisible(false);
 		ArrayList<Client> clients = clientRepository.getClientByName(username.getText().trim());
 		
 		if (clients.isEmpty()) {
-			clientTable.setItems(FXCollections.observableArrayList());
+			clientObservableList.clear();
+
 		} else {
-			clientTable.setItems(FXCollections.observableArrayList(clients));
+			
+			clientObservableList.clear();
+			clientObservableList.addAll(clients);
 			
 		}
 	}
@@ -196,6 +215,9 @@ public class ClientController {
 	@FXML
 	private void clicked() {
 		clientTable.getSelectionModel().clearSelection();
+		edit.setDisable(true);
+		delete.setDisable(true);
+		session.setSelectedClient(null);
 	}
 
 	@FXML

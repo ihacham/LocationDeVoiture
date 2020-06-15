@@ -21,23 +21,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label layoutX="212.0" layoutY="68.0" text="Client name :" />
-      <TextField fx:id="username" layoutX="320.0" layoutY="64.0" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
-      <Label fx:id="searchClient" layoutX="518.0" layoutY="67.0">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="20.0" onKeyPressed="#searchClient" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../resources/search.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
+      <Label layoutX="337.0" layoutY="74.0" text="Client name :" />
+      <TextField fx:id="username" layoutX="445.0" layoutY="70.0" onKeyReleased="#searchClient" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
       <TableView fx:id="clientTable" focusTraversable="false" layoutY="124.0" onMouseClicked="#tableClick" prefHeight="337.0" prefWidth="1013.0">
         <columns>
           <TableColumn fx:id="code" prefWidth="53.0" text="Code" />
@@ -71,6 +56,36 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </Label>
+      <Label fx:id="searchClient" layoutX="643.0" layoutY="72.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label fx:id="clearSearchLabel" layoutX="645.0" layoutY="75.0" onMouseClicked="#clearSearch" visible="false">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/close.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
       </Label>
    </children>
 </Pane>

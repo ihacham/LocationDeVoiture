@@ -24,8 +24,8 @@ public class ClientRepository {
 		 
 		try {
 			
-			PreparedStatement ps = connection.prepareStatement("select * from client where nom = ?");
-			ps.setString(1, name);
+			PreparedStatement ps = connection.prepareStatement("select * from client where nom like ?");
+			ps.setString(1,"%"+ name+"%");
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
