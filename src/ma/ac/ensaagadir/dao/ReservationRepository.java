@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
+import ma.ac.ensaagadir.models.Client;
 import ma.ac.ensaagadir.models.Reservation;
 import ma.ac.ensaagadir.utils.SingletonConnection;
 
@@ -71,7 +71,23 @@ public class ReservationRepository {
 				Reservation.setDateReservation(rs.getDate(7).toLocalDate());
 				Reservation.setDateDepart(rs.getDate(8).toLocalDate());
 				Reservation.setDateRetour(rs.getDate(9).toLocalDate());
+				
+				ps = connection.prepareStatement("select * from Client where codeClient = ?");
+				Client client = Reservation.getClient();
+				ps.setLong(1, client.getCodeClient());
+				ResultSet result = ps.executeQuery();
+				while (result.next()) {
+					client.setNom(result.getString(2));
+					client.setPrenom(result.getString(3));
+					client.setAdresse(result.getString(4));
+					client.setImageScanneeDPermis(result.getString(5));
+					client.setTel(result.getString(6));
+					client.setAge(result.getInt(7));
+				}
+				
 				Reservations.add(Reservation);
+				
+				
 				
 			}
 		} catch (SQLException e) {
