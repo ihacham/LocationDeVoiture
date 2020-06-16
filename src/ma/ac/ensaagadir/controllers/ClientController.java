@@ -21,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -159,10 +158,11 @@ public class ClientController {
 	@FXML
 	void tableClick(MouseEvent event) {
 		Client client = clientTable.getSelectionModel().getSelectedItem();
-		session.setSelectedClient(client);
-		System.out.println(client.getAdresse());
-		edit.setDisable(false);
-		delete.setDisable(false);
+		if(client != null) {
+			session.setSelectedClient(client);
+			edit.setDisable(false);
+			delete.setDisable(false);
+		}
 
 	}
 

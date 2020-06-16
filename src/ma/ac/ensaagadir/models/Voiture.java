@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
 
 public class Voiture {
 	
-	private LongProperty numImmatriculation ;
+	private StringProperty numImmatriculation ;
 	private ObjectProperty<Parking>  parking  ;
 	private StringProperty  marque ;
 	private StringProperty  type ;
@@ -30,10 +30,10 @@ public class Voiture {
 	}
 
 
-	public Voiture(long numImmatriculation, String marque, String type, String carburant,
+	public Voiture(String numImmatriculation, String marque, String type, String carburant,
 			double compteurDeKM, LocalDate dateDeMiseEnCirculation) {
 		
-		this.numImmatriculation = new SimpleLongProperty(numImmatriculation);
+		this.numImmatriculation = new SimpleStringProperty(numImmatriculation);
 		this.marque = new SimpleStringProperty(marque);
 		this.type = new SimpleStringProperty(type);
 		this.carburant = new SimpleStringProperty(carburant);
@@ -43,14 +43,14 @@ public class Voiture {
 	}
 	
 	
-	public long getNumImmatriculation() {
+	public String getNumImmatriculation() {
 		return numImmatriculation.get();
 	}
-	public LongProperty NumImmatriculation() {
+	public StringProperty NumImmatriculation() {
 		return numImmatriculation;
 	}
-	public void setNumImmatriculation(long numImmatriculation) {
-		this.numImmatriculation =  new SimpleLongProperty(numImmatriculation);
+	public void setNumImmatriculation(String numImmatriculation) {
+		this.numImmatriculation =  new SimpleStringProperty(numImmatriculation);
 	}
 	public Parking getParking() {
 		return parking.get();

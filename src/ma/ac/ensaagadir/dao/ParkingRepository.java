@@ -40,7 +40,7 @@ public class ParkingRepository {
 
 				while (result.next()) {
 					Voiture voiture = new Voiture();
-					voiture.setNumImmatriculation(result.getLong(1));
+					voiture.setNumImmatriculation(result.getString(1));
 					voiture.getParking().setNumParking(result.getLong(2));
 					voiture.setMarque(result.getString(3));
 					voiture.setType(result.getString(4));
@@ -87,7 +87,7 @@ public class ParkingRepository {
 
 				while (result.next()) {
 					Voiture voiture = new Voiture();
-					voiture.setNumImmatriculation(result.getLong(1));
+					voiture.setNumImmatriculation(result.getString(1));
 					voiture.getParking().setNumParking(result.getLong(2));
 					voiture.setMarque(result.getString(3));
 					voiture.setType(result.getString(4));

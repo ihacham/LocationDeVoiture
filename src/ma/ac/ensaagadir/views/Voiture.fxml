@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.VoitureController">
+<Pane fx:id="pane" prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.VoitureController">
    <children>
       <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#returnBack" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,17 +22,17 @@
          </cursor>
       </ImageView>
       <Label layoutX="347.0" layoutY="84.0" text="Marque Voiture :" />
-      <TextField fx:id="codeVoitureInput" layoutX="455.0" layoutY="80.0" onKeyReleased="#searchReservation" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
+      <TextField fx:id="codeVoitureInput" layoutX="455.0" layoutY="80.0" onKeyReleased="#searchVoiture" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
       <TableView fx:id="voitureTable" layoutY="137.0" onMouseClicked="#tableClick" prefHeight="337.0" prefWidth="1013.0">
          <columns>
-            <TableColumn fx:id="code" prefWidth="110.0" text="Immatriculation" />
-            <TableColumn fx:id="nomClient" prefWidth="139.0" text="marque" />
-            <TableColumn fx:id="matriculeVoiture" prefWidth="133.0" text="Type" />
-            <TableColumn fx:id="etat" prefWidth="142.0" text="Carburant" />
-            <TableColumn fx:id="dateReservation" prefWidth="88.0" text="N° Parking" />
-            <TableColumn fx:id="dateDepart" prefWidth="141.0" text="Compteur De KM" />
-            <TableColumn fx:id="dateRetour1" prefWidth="183.0" text="Date De Mise En Circulation" />
-            <TableColumn prefWidth="76.0" text="Disponible" />
+            <TableColumn fx:id="immatriculation" prefWidth="110.0" text="Immatriculation" />
+            <TableColumn fx:id="marque" prefWidth="139.0" text="marque" />
+            <TableColumn fx:id="type" prefWidth="133.0" text="Type" />
+            <TableColumn fx:id="carburant" prefWidth="142.0" text="Carburant" />
+            <TableColumn fx:id="numParking" prefWidth="88.0" text="N° Parking" />
+            <TableColumn fx:id="kilometrage" prefWidth="141.0" text="Compteur De KM" />
+            <TableColumn fx:id="dateDeMiseEnCirculation" prefWidth="183.0" text="Date De Mise En Circulation" />
+            <TableColumn fx:id="disponibilite" prefWidth="76.0" text="Disponible" />
          </columns>
       </TableView>
       <Button fx:id="edit" layoutX="393.0" layoutY="529.0" mnemonicParsing="false" onAction="#showEditVoiture" prefHeight="31.0" prefWidth="110.0" text="Modifier">

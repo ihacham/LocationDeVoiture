@@ -29,7 +29,7 @@ public class AddReservationController {
     private ComboBox<Long> comboClient;
 
     @FXML
-    private ComboBox<Long> comboVoiture;
+    private ComboBox<String> comboVoiture;
     
     @FXML
     private DatePicker dateReservation;
@@ -67,13 +67,13 @@ public class AddReservationController {
     	ObservableList<Long> clients= FXCollections.observableArrayList(idClientList);
     	comboClient.getItems().addAll(clients);   
     	 
-    	ArrayList<Long> idVoitureList= new ArrayList<>();
+       ArrayList<String> idVoitureList= new ArrayList<>();
        voitures = voitureRepository.getAllVoitures();
     	for(Voiture voiture : voitures) {
     		idVoitureList.add(voiture.getNumImmatriculation());
     	}
-    	ObservableList<Long> voitures= FXCollections.observableArrayList(idVoitureList);
-    	comboVoiture.getItems().addAll(clients); 
+    	ObservableList<String> voitures= FXCollections.observableArrayList(idVoitureList);
+    	comboVoiture.getItems().addAll(voitures); 
    
     	
     	disablePastDates(dateDepart);

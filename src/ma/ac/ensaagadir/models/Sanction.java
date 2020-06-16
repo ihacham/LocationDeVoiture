@@ -3,7 +3,8 @@ package ma.ac.ensaagadir.models;
 public class Sanction {
 	private long numSanction ;
 	private RestituerVoiture  restitution  ;
-	
+	private int joursDeRetard;
+	private double montant;
 	
 	
 	public Sanction() {
@@ -15,6 +16,25 @@ public class Sanction {
 		super();
 		this.numSanction = numSanction;
 	}
+	
+	
+	
+	public int getJoursDeRetard() {
+		return joursDeRetard;
+	}
+
+	public void setJoursDeRetard(int joursDeRetard) {
+		this.joursDeRetard = joursDeRetard;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+
 	public long getNumSanction() {
 		return numSanction;
 	}

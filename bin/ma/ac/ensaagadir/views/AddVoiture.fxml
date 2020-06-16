@@ -1,8 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="540.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.AddVoitureController">
+   <children>
+      <Label fx:id="title" alignment="CENTER" layoutX="-3.0" prefHeight="35.0" prefWidth="547.0" text="Ajouter Voiture">
+         <font>
+            <Font name="Verdana" size="32.0" />
+         </font>
+      </Label>
+      <VBox layoutX="80.0" layoutY="78.0" prefHeight="289.0" prefWidth="381.0" spacing="25.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="110.0" text="Immatriculation :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="immatriculation" prefHeight="25.0" prefWidth="269.0" promptText="Entrer l'immatriculation..." />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="110.0" text="Parking :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="parkingCombo" prefHeight="25.0" prefWidth="267.0" promptText="Choisissez le parking" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="110.0" text="Marque :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="marque" prefHeight="40.0" prefWidth="268.0" promptText="Entrer la marque..." />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="110.0" text="Type :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="type" prefHeight="40.0" prefWidth="268.0" promptText="Entrer le type..." />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="110.0" text="Carburant :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="carburantCombo" prefHeight="25.0" prefWidth="267.0" promptText="Choisissez le carburant" />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="110.0" text="Kilomètrages :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="kilometrage" prefHeight="40.0" prefWidth="268.0" promptText="Entrer le nombre de kilométre roulé..." />
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="141.0" text="Date Circulation : ">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateMiseEnCirculation" prefHeight="25.0" prefWidth="298.0" promptText="date de Mise en circulation" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="381.0">
+               <children>
+                  <Label prefHeight="19.0" prefWidth="95.0" text="Disponibilité :">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="disponiblite" mnemonicParsing="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
+               <children>
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveVoiture" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
+                  <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Réinitialiser" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Line endX="161.0" layoutX="271.0" layoutY="54.0" startX="-153.0" />
+   </children>
 </AnchorPane>
-

@@ -1,31 +1,28 @@
 package ma.ac.ensaagadir.controllers;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import ma.ac.ensaagadir.dao.ParkingRepository;
+import ma.ac.ensaagadir.dao.ReservationRepository;
 import ma.ac.ensaagadir.dao.VoitureRepository;
 import ma.ac.ensaagadir.models.Parking;
+import ma.ac.ensaagadir.models.Reservation;
 import ma.ac.ensaagadir.models.Voiture;
+import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 
-public class AddVoitureController {
+public class EditVoitureController {
 
-    @FXML
-    private Label title;
-
-    @FXML
+	@FXML
     private TextField immatriculation;
 
     @FXML
@@ -48,23 +45,22 @@ public class AddVoitureController {
 
     @FXML
     private CheckBox disponiblite;
+    
 
-    @FXML
-    private Button saveButton;
-
+    private ParkingRepository parkingRepository; 
     private VoitureRepository voitureRepository;
     
-    private ParkingRepository parkingRepository;
-    
     private ArrayList<Parking> parkings;
+    private Voiture voiture;
     
     @FXML
     private void initialize() {
-    	voitureRepository = new VoitureRepository();
-    	carburantCombo.setItems(FXCollections.observableArrayList("Diesel", "Essence", "Carburant gazeux"));
-    	disponiblite.setSelected(true);
-    	disponiblite.setDisable(true);
-    	parkings = parkingRepository.getAllParkings();
+    	parkingRepository = new ParkingRepository();
+        voitureRepository = new VoitureRepository();
+        
+        voiture = ApplicationSessionSingleton.getInstance().getSelectedVoiture();
+
+        parkings = parkingRepository.getAllParkings();
     	ArrayList<Long> idParkingList= new ArrayList<>();
     	for(Parking parking : parkings) {
     		idParkingList.add(parking.getNumParking());
@@ -72,32 +68,24 @@ public class AddVoitureController {
     	ObservableList<Long> parkings= FXCollections.observableArrayList(idParkingList);
     	parkingCombo.getItems().addAll(parkings);
     	
-    	dateMiseEnCirculation.setDayCellFactory(picker -> new DateCell() {
-            public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-
-                setDisable(empty || date.compareTo(today) > 0 );
-            }
-        });
+    	carburantCombo.setItems(FXCollections.observableArrayList("Diesel", "Essence", "Carburant gazeux"));
+        
+        
+        immatriculation.setText(voiture.getNumImmatriculation());
+        immatriculation.setDisable(true);
+        parkingCombo.setValue(voiture.getParking().getNumParking());
+        carburantCombo.setValue(voiture.getCarburant());
+        marque.setText(voiture.getMarque());
+        type.setText(voiture.getType());
+        kilometrage.setText(String.valueOf(voiture.getCompteurDeKM()));
+        dateMiseEnCirculation.setValue(voiture.getDateDeMiseEnCirculation());
+        disponiblite.setSelected(voiture.getDisponibility());
 	}
     
+    
     @FXML
-    void reset(ActionEvent event) {
-    	carburantCombo.setValue(null);
-    	kilometrage.setText("");
-    	dateMiseEnCirculation.setValue(null);
-    	disponiblite.setSelected(true);
-    	immatriculation.setText("");
-    	marque.setText("");
-    	type.setText("");
-    	parkingCombo.setValue(null);
-    }
-
-    @FXML
-    void saveVoiture(ActionEvent event) {
+    void saveClient(ActionEvent event) {
     	try {
-    		Voiture voiture= new Voiture();
     		
     		voiture.setNumParking(parkings.stream().filter(p -> p.getNumParking() == parkingCombo.getValue()).findFirst().get());
     		voiture.setCarburant(carburantCombo.getValue());
@@ -108,13 +96,15 @@ public class AddVoitureController {
     		voiture.setNumImmatriculation(immatriculation.getText());
     		voiture.setDateDeMiseEnCirculation(dateMiseEnCirculation.getValue());
     		
-    		VoitureController.getVoitureObservableList().addAll(voitureRepository.addVoiture(voiture));
+    		
+    		voitureRepository.editVoiture(voiture);
+    		int index = VoitureController.getVoitureObservableList().indexOf(voiture);
+    		VoitureController.getVoitureObservableList().set(index, voiture);
+    		((Stage)type.getScene().getWindow()).close();
     		
     		} catch (SQLException e) {
     			e.printStackTrace();
     		}
-    		
     }
-    
 
 }

@@ -2,6 +2,7 @@ package ma.ac.ensaagadir.controllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,72 +20,74 @@ import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 
 public class EditReservationController {
 
-    @FXML
-    private Label title;
+	@FXML
+	private Label title;
 
-    @FXML
-    private Button saveButton;
+	@FXML
+	private Button saveButton;
 
-    @FXML
-    private ComboBox<Long> comboClient;
+	@FXML
+	private ComboBox<Long> comboClient;
 
-    @FXML
-    private ComboBox<Long> comboVoiture;
+	@FXML
+	private ComboBox<String> comboVoiture;
 
-    @FXML
-    private DatePicker dateReservation;
+	@FXML
+	private DatePicker dateReservation;
 
-    @FXML
-    private DatePicker dateDepart;
+	@FXML
+	private DatePicker dateDepart;
 
-    @FXML
-    private DatePicker dateRetour;
+	@FXML
+	private DatePicker dateRetour;
 
-    @FXML
-    private ComboBox<String> etat;
+	@FXML
+	private ComboBox<String> etat;
 
-    private ReservationRepository reservationRepository; 
-    private VoitureRepository voitureRepository;
-    
-    private Reservation reservation;
-    @FXML
-    private void initialize() {
-    	reservationRepository = new ReservationRepository();
-        voitureRepository = new VoitureRepository();
-        
-        etat.setItems(FXCollections.observableArrayList("Validée","Non Validée","Annulée"));
-        
-        reservation = ApplicationSessionSingleton.getInstance().getSelectedReservation();
-        
-        comboClient.setValue(reservation.getClient().getCodeClient());
-        comboClient.setDisable(true);
-        comboVoiture.setValue(reservation.getVoiture().getNumImmatriculation());
-        dateReservation.setValue(reservation.getDateReservation());
-        dateDepart.setValue(reservation.getDateDepart());
-        dateRetour.setValue(reservation.getDateRetour());
-        etat.setValue(reservation.getEtat());
+	private ReservationRepository reservationRepository;
+	private VoitureRepository voitureRepository;
+	ArrayList<Voiture> voitures;
+	private Reservation reservation;
+
+	@FXML
+	private void initialize() {
+		reservationRepository = new ReservationRepository();
+		voitureRepository = new VoitureRepository();
+		voitures = voitureRepository.getAllVoitures();
+		comboVoiture.setItems(FXCollections.observableArrayList(
+				voitures.stream().map(v -> v.getNumImmatriculation()).collect(Collectors.toList())));
+		etat.setItems(FXCollections.observableArrayList("Validée", "Non Validée", "Annulée"));
+
+		reservation = ApplicationSessionSingleton.getInstance().getSelectedReservation();
+
+		comboClient.setValue(reservation.getClient().getCodeClient());
+		comboClient.setDisable(true);
+		comboVoiture.setValue(reservation.getVoiture().getNumImmatriculation());
+		dateReservation.setValue(reservation.getDateReservation());
+		dateDepart.setValue(reservation.getDateDepart());
+		dateRetour.setValue(reservation.getDateRetour());
+		etat.setValue(reservation.getEtat());
 	}
-    
-    
-    @FXML
-    void saveClient(ActionEvent event) {
-    	try {
-    		ArrayList<Voiture> voitures = voitureRepository.getAllVoitures();
-    		reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
-    		reservation.setDateReservation(dateReservation.getValue());
-    		reservation.setDateDepart(dateDepart.getValue());
-    		reservation.setDateRetour(dateRetour.getValue());
-    		reservation.setEtat(etat.getValue());
-    		
-    		
-    		reservationRepository.editReservation(reservation);
-    		int index = ReservationController.getReservationObservableList().indexOf(reservation);
-    		ReservationController.getReservationObservableList().set(index, reservation);
-    		((Stage)etat.getScene().getWindow()).close();
-    		
-    		} catch (SQLException e) {
-    			e.printStackTrace();
-    		}
-    }
+
+	@FXML
+	void saveClient(ActionEvent event) {
+		try {
+
+			reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue())
+					.findFirst().get());
+			reservation.setDateReservation(dateReservation.getValue());
+			reservation.setDateDepart(dateDepart.getValue());
+			reservation.setDateRetour(dateRetour.getValue());
+			reservation.setEtat(etat.getValue());
+
+			reservationRepository.editReservation(reservation);
+			int index = ReservationController.getReservationObservableList().indexOf(reservation);
+			ReservationController.getReservationObservableList().set(index, reservation);
+			((Stage) etat.getScene().getWindow()).close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

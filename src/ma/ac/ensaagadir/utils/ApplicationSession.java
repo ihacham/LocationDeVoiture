@@ -4,10 +4,13 @@ import java.io.File;
 
 import ma.ac.ensaagadir.models.Client;
 import ma.ac.ensaagadir.models.Reservation;
+import ma.ac.ensaagadir.models.Voiture;
 
 public class ApplicationSession {
 	
 	private Client selectedClient;
+	
+	private Voiture selectedVoiture;
 	
 	private Reservation selectedReservation;
 	
@@ -36,6 +39,16 @@ public class ApplicationSession {
 
 	public void setSelectedReservation(Reservation selectedReservation) {
 		this.selectedReservation = selectedReservation;
+	}
+	
+	
+
+	public Voiture getSelectedVoiture() {
+		return selectedVoiture;
+	}
+
+	public void setSelectedVoiture(Voiture selectedVoiture) {
+		this.selectedVoiture = selectedVoiture;
 	}
 
 	public ApplicationSession() {

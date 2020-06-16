@@ -29,7 +29,7 @@ public class VoitureRepository {
 			while (rs.next()) {
 				// numImmatriculation numParking marque type carburant compteurDeKM dateDeMiseEnCirculation disponible
 				Voiture voiture = new Voiture();
-				voiture.setNumImmatriculation(rs.getLong(1));				
+				voiture.setNumImmatriculation(rs.getString(1));				
 				voiture.getParking().setNumParking(rs.getLong(2));
 				voiture.setMarque(rs.getString(3));
 				voiture.setType(rs.getString(4));
@@ -58,7 +58,7 @@ public class VoitureRepository {
 			while (rs.next()) {
 				// numImmatriculation numParking marque type carburant compteurDeKM dateDeMiseEnCirculation disponible
 				Voiture voiture = new Voiture();
-				voiture.setNumImmatriculation(rs.getLong(1));				
+				voiture.setNumImmatriculation(rs.getString(1));				
 				voiture.getParking().setNumParking(rs.getLong(2));
 				voiture.setMarque(rs.getString(3));
 				voiture.setType(rs.getString(4));
@@ -95,7 +95,7 @@ public class VoitureRepository {
 		ResultSet result = ps.executeQuery();
 		
 		while(result.next()) {
-			nvVoiture.setNumImmatriculation(result.getLong(1));
+			nvVoiture.setNumImmatriculation(result.getString(1));
 		}
 		
 		return nvVoiture;
@@ -115,7 +115,7 @@ public class VoitureRepository {
 		ps.setDate(6, java.sql.Date.valueOf(nvVoiture.getDateDeMiseEnCirculation()));
 		ps.setBoolean(6, nvVoiture.getDisponibility());
 
-		ps.setLong(7, nvVoiture.getNumImmatriculation());
+		ps.setString(7, nvVoiture.getNumImmatriculation());
 		int rs = ps.executeUpdate();
 
 	}
@@ -124,7 +124,7 @@ public class VoitureRepository {
 	public void deleteVoiture(Voiture nvVoiture) throws SQLException {
 
 		PreparedStatement ps = connection.prepareStatement("delete from Voiture where numImmatriculation=?");
-		ps.setLong(1, nvVoiture.getNumImmatriculation());
+		ps.setString(1, nvVoiture.getNumImmatriculation());
 
 		int rs = ps.executeUpdate();
 

@@ -34,7 +34,7 @@ public class ReservationRepository {
 				Reservation Reservation = new Reservation();
 				Reservation.setCodeReservation(rs.getLong(1));
 				Reservation.setEtat(rs.getString(2));
-				Reservation.getVoiture().setNumImmatriculation(rs.getLong(3));
+				Reservation.getVoiture().setNumImmatriculation(rs.getString(3));
 				Reservation.getRestitution().setCodeRestitution(rs.getLong(4));
 				Reservation.getContrat().setNumContrat(rs.getLong(5));
 				Reservation.getClient().setCodeClient(rs.getLong(6));
@@ -64,7 +64,7 @@ public class ReservationRepository {
 				Reservation Reservation = new Reservation();
 				Reservation.setCodeReservation(rs.getLong(1));
 				Reservation.setEtat(rs.getString(2));
-				Reservation.getVoiture().setNumImmatriculation(rs.getLong(3));
+				Reservation.getVoiture().setNumImmatriculation(rs.getString(3));
 				Reservation.getRestitution().setCodeRestitution(rs.getLong(4));
 				Reservation.getContrat().setNumContrat(rs.getLong(5));
 				Reservation.getClient().setCodeClient(rs.getLong(6));
@@ -103,7 +103,7 @@ public class ReservationRepository {
 		PreparedStatement ps = connection.prepareStatement(
 				"insert into Reservation(etat,	numImmatriculation,	codeRestitution,	numContrat,	codeClient,	dateReservation,	dateDepart,	dateRetour) values (?,?,?,?,?,?,?,?)");
 		ps.setString(1, nvReservation.getEtat());
-		ps.setLong(2, nvReservation.getVoiture().getNumImmatriculation());
+		ps.setString(2, nvReservation.getVoiture().getNumImmatriculation());
 		ps.setLong(3, nvReservation.getRestitution().getCodeRestitution());
 		ps.setLong(4, nvReservation.getContrat().getNumContrat());
 		ps.setLong(5, nvReservation.getClient().getCodeClient());
@@ -129,7 +129,7 @@ public class ReservationRepository {
 		PreparedStatement ps = connection.prepareStatement(
 				"update Reservation set etat=?,	numImmatriculation=?,	codeClient=?,	dateReservation=?,	dateDepart=?,	dateRetour=? where codeReservation=?");
 		ps.setString(1, nvReservation.getEtat());
-		ps.setLong(2, nvReservation.getVoiture().getNumImmatriculation());
+		ps.setString(2, nvReservation.getVoiture().getNumImmatriculation());
 		ps.setLong(3, nvReservation.getClient().getCodeClient());
 		ps.setDate(4, java.sql.Date.valueOf(nvReservation.getDateReservation()));
 		ps.setDate(5, java.sql.Date.valueOf(nvReservation.getDateDepart()));
