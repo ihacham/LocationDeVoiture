@@ -1,12 +1,13 @@
 package ma.ac.ensaagadir;
 	
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 
 
 public class Main extends Application {
@@ -28,5 +29,24 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	@Override
+	public void init() throws Exception {
+		// Creating Application Folder
+		String appFolder = ApplicationSessionSingleton.getInstance().getAppFolder();
+		File appFolderFile = new File(appFolder);
+		File permisFolderFile = new File(ApplicationSessionSingleton.getInstance().getPermisImagesFolder());
+		if (!appFolderFile.exists()){
+			appFolderFile.mkdir();
+	    }
+		
+		if (!permisFolderFile.exists()){
+			permisFolderFile.mkdir();
+	        
+	    }
+				
+			
+		
 	}
 }

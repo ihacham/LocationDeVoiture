@@ -122,24 +122,24 @@ public class ReservationRepository {
 		return nvReservation;
 	}
 
-/*	// edit Reservation
+	// edit Reservation
 	public void editReservation(Reservation nvReservation) throws SQLException {
 		
 		
 		PreparedStatement ps = connection.prepareStatement(
-				"update Reservation set nom=?, prenom=?,	adresse=?,imageScanneeDPermis=?	,tel=?,age=? where codeReservation=?");
-		ps.setString(1, nvReservation.getNom());
-		ps.setString(2, nvReservation.getPrenom());
-		ps.setString(3, nvReservation.getAdresse());
-		ps.setString(4, nvReservation.getImageScanneeDPermis());
-		ps.setString(5, nvReservation.getTel());
-		ps.setInt(6, nvReservation.getAge());
-		ps.setLong(7, nvReservation.getCodeReservation());
+				"update Reservation set etat=?,	numImmatriculation=?,	codeClient=?,	dateReservation=?,	dateDepart=?,	dateRetour=?");
+		ps.setString(1, nvReservation.getEtat());
+		ps.setLong(2, nvReservation.getVoiture().getNumImmatriculation());
+		ps.setLong(3, nvReservation.getClient().getCodeClient());
+		ps.setDate(4, java.sql.Date.valueOf(nvReservation.getDateReservation()));
+		ps.setDate(5, java.sql.Date.valueOf(nvReservation.getDateDepart()));
+		ps.setDate(6, java.sql.Date.valueOf(nvReservation.getDateRetour()));
+		
 
 		int rs = ps.executeUpdate();
 
 	}
-*/
+
 	// delete Reservation
 	public void deleteReservation(Reservation nvReservation) throws SQLException {
 

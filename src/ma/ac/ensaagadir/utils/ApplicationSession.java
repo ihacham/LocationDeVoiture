@@ -1,5 +1,7 @@
 package ma.ac.ensaagadir.utils;
 
+import java.io.File;
+
 import ma.ac.ensaagadir.models.Client;
 import ma.ac.ensaagadir.models.Reservation;
 
@@ -9,7 +11,14 @@ public class ApplicationSession {
 	
 	private Reservation selectedReservation;
 	
+	public String getAppFolder() {
+		
+		return System.getProperty("user.home") + File.separator + "LocationVoitureApp";
+	}
 	
+	public String getPermisImagesFolder() {
+		return getAppFolder() + File.separator + "PermisImages";
+	}
 
 	public Client getSelectedClient() {
 		return selectedClient;

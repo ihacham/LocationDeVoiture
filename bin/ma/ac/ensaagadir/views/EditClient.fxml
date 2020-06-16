@@ -92,5 +92,6 @@
          </children>
       </HBox>
       <Line endX="161.0" layoutX="271.0" layoutY="54.0" startX="-153.0" />
+      <Label fx:id="permisFullPath" layoutX="86.0" layoutY="403.0" prefHeight="17.0" prefWidth="375.0" visible="false" />
    </children>
 </AnchorPane>
