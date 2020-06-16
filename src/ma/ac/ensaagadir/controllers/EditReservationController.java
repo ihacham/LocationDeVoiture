@@ -1,6 +1,7 @@
 package ma.ac.ensaagadir.controllers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -10,10 +11,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import ma.ac.ensaagadir.dao.ClientRepository;
 import ma.ac.ensaagadir.dao.ReservationRepository;
 import ma.ac.ensaagadir.dao.VoitureRepository;
 import ma.ac.ensaagadir.models.Reservation;
+import ma.ac.ensaagadir.models.Voiture;
 import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 
 public class EditReservationController {
@@ -68,8 +69,8 @@ public class EditReservationController {
     @FXML
     void saveClient(ActionEvent event) {
     	try {
-    		//ArrayList<Voiture> voitures = voitureRepository.getAllVoitures();
-    		//reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
+    		ArrayList<Voiture> voitures = voitureRepository.getAllVoitures();
+    		reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
     		reservation.setDateReservation(dateReservation.getValue());
     		reservation.setDateDepart(dateDepart.getValue());
     		reservation.setDateRetour(dateRetour.getValue());
