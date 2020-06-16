@@ -1,54 +1,100 @@
 package ma.ac.ensaagadir.models;
 
+import java.util.ArrayList;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Parking {
-	private String  numParking ;
-	private Voiture immatriculation  ;
-	private long  capacite  ;
-	private String  rue ;
-	private String  arrondissement  ;
+	private LongProperty  numParking;
+	private ObjectProperty<ArrayList<Voiture>> voitures;
+	private LongProperty  capacite;
+	private StringProperty  rue;
+	private StringProperty  arrondissement;
+	
 	
 	
 	public Parking() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public Parking( long capacite, String rue, String arrondissement) {
-		super();
-		this.capacite = capacite;
-		this.rue = rue;
-		this.arrondissement = arrondissement;
+	public Parking(long capacite, String rue, String arrondissement) {
+		this.capacite = new SimpleLongProperty(capacite);
+		this.rue = new SimpleStringProperty(rue);
+		this.arrondissement = new SimpleStringProperty(arrondissement);
 	}
-	public String getNumParking() {
+	public Long getNumParking() {
+		return numParking.get();
+	}
+	public  LongProperty NumParking() {
 		return numParking;
 	}
-	public void setNumParking(String numParking) {
-		this.numParking = numParking;
+	public void setNumParking(Long numParking) {
+		this.numParking = new SimpleLongProperty(numParking);
 	}
-	public Voiture getNumImmatriculation() {
-		return immatriculation;
+	public ArrayList<Voiture> getVoitures() {
+		return voitures.get();
 	}
-	public void setNumImmatriculation(Voiture immatriculation) {
-		this.immatriculation = immatriculation;
+	public  ObjectProperty<ArrayList<Voiture>> Voitures() {
+		return voitures;
+	}
+	public void setVoitures(ArrayList<Voiture> voitures) {
+		this.voitures = new SimpleObjectProperty<>(voitures);
 	}
 	public long getCapacite() {
+		return capacite.get();
+	}
+	public  LongProperty Capacite() {
 		return capacite;
 	}
 	public void setCapacite(long capacite) {
-		this.capacite = capacite;
+		this.capacite = new SimpleLongProperty(capacite);
 	}
 	public String getRue() {
+		return rue.get();
+	}
+	public  StringProperty Rue() {
 		return rue;
 	}
 	public void setRue(String rue) {
-		this.rue = rue;
+		this.rue = new SimpleStringProperty(rue);
 	}
 	public String getArrondissement() {
+		return arrondissement.get();
+	}
+	public  StringProperty Arrondissement() {
 		return arrondissement;
 	}
 	public void setArrondissement(String arrondissement) {
-		this.arrondissement = arrondissement;
+		this.arrondissement = new SimpleStringProperty(arrondissement);
 	}
+
+	
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Parking other = (Parking) obj;
+		if (numParking == null) {
+			if (other.numParking != null)
+				return false;
+		} else if (!numParking.equals(other.numParking))
+			return false;
+		return true;
+	}
+	
 	
 	
 }

@@ -55,9 +55,10 @@ public class AddReservationController {
 	private void initialize() {
     	clientsRepository = new ClientRepository();
     	reservationRepository = new ReservationRepository();
-    	//voitresRepository = new VoitureRepository();
+    	voitureRepository = new VoitureRepository();
     	comboClient.setPromptText("Sélectionner votre client");
     	comboVoiture.setPromptText("Sélectionner sa mmatriculation");
+    	
     	clients = clientsRepository.getAllClients();
     	ArrayList<Long> idClientList= new ArrayList<>();
     	for(Client client : clients) {
@@ -66,14 +67,14 @@ public class AddReservationController {
     	ObservableList<Long> clients= FXCollections.observableArrayList(idClientList);
     	comboClient.getItems().addAll(clients);   
     	 
-    /*	ArrayList<Long> immat= new ArrayList<>();
-     *  voitures = VoituressRepository.getAllClients();
+    	ArrayList<Long> idVoitureList= new ArrayList<>();
+       voitures = voitureRepository.getAllVoitures();
     	for(Voiture voiture : voitures) {
-    		immat.add(voiture.getCodeClient());
+    		idVoitureList.add(voiture.getNumImmatriculation());
     	}
-    	ObservableList<Long> clients= FXCollections.observableArrayList(idClientList);
+    	ObservableList<Long> voitures= FXCollections.observableArrayList(idVoitureList);
     	comboVoiture.getItems().addAll(clients); 
-    */
+   
     	
     	disablePastDates(dateDepart);
     	disablePastDates(dateReservation);
@@ -111,7 +112,7 @@ public class AddReservationController {
     		Reservation reservation= new Reservation();
     		
     		reservation.setClient(clients.stream().filter(c -> c.getCodeClient() == comboClient.getValue()).findFirst().get());
-    		//reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
+    		reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
     		reservation.setDateReservation(dateReservation.getValue());
     		reservation.setDateDepart(dateDepart.getValue());
     		reservation.setDateRetour(dateRetour.getValue());

@@ -127,7 +127,7 @@ public class ReservationRepository {
 		
 		
 		PreparedStatement ps = connection.prepareStatement(
-				"update Reservation set etat=?,	numImmatriculation=?,	codeClient=?,	dateReservation=?,	dateDepart=?,	dateRetour=?");
+				"update Reservation set etat=?,	numImmatriculation=?,	codeClient=?,	dateReservation=?,	dateDepart=?,	dateRetour=? where codeReservation=?");
 		ps.setString(1, nvReservation.getEtat());
 		ps.setLong(2, nvReservation.getVoiture().getNumImmatriculation());
 		ps.setLong(3, nvReservation.getClient().getCodeClient());
@@ -135,7 +135,7 @@ public class ReservationRepository {
 		ps.setDate(5, java.sql.Date.valueOf(nvReservation.getDateDepart()));
 		ps.setDate(6, java.sql.Date.valueOf(nvReservation.getDateRetour()));
 		
-
+		ps.setLong(7, nvReservation.getCodeReservation());
 		int rs = ps.executeUpdate();
 
 	}
