@@ -120,8 +120,25 @@ public class Reservation {
 	public void setDateRetour(LocalDate dateRetour) {
 		this.dateRetour = new SimpleObjectProperty<>(dateRetour);
 	}
+
 	
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reservation other = (Reservation) obj;
+		if (codeReservation == null) {
+			if (other.codeReservation != null)
+				return false;
+		} else if (!codeReservation.equals(other.codeReservation))
+			return false;
+		return true;
+	}
+
 	
 }

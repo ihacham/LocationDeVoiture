@@ -196,7 +196,7 @@ public class ReservationController {
 		if (result.get() == ButtonType.OK){
 			try {
 				reservationRepository.deleteReservation(session.getSelectedReservation());
-				reservationObservableList.remove(session.getSelectedClient());
+				reservationObservableList.remove(session.getSelectedReservation());
 			} catch (SQLException e) {
 				Alert error = new Alert(AlertType.ERROR);
 				error.setTitle("Erreur Suppression de reservation");
