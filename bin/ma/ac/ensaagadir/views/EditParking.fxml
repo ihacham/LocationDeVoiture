@@ -10,14 +10,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="540.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.AddParkingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="540.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.EditParkingController">
    <children>
-      <Label fx:id="title" alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="35.0" prefWidth="547.0" text="Ajouter Parking">
+      <Label fx:id="title" alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="35.0" prefWidth="547.0" text="Modifier Parking">
          <font>
             <Font name="Verdana" size="32.0" />
          </font>
       </Label>
-      <VBox layoutX="80.0" layoutY="128.0" prefHeight="187.0" prefWidth="381.0" spacing="25.0">
+      <VBox layoutX="85.0" layoutY="139.0" prefHeight="204.0" prefWidth="381.0" spacing="25.0">
          <children>
             <HBox prefHeight="40.0" prefWidth="381.0">
                <children>
@@ -51,13 +51,12 @@
             </HBox>
          </children>
       </VBox>
-      <Line endX="161.0" layoutX="271.0" layoutY="54.0" startX="-153.0" />
-      <Label fx:id="permisFullPath" layoutX="77.0" layoutY="391.0" prefHeight="28.0" prefWidth="381.0" visible="false" />
-      <HBox alignment="CENTER" layoutX="-2.0" layoutY="339.0" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="361.0" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
          <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveClient" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
-            <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Annuler" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveClient" prefHeight="30.0" prefWidth="150.0" text="Valider" />
          </children>
       </HBox>
+      <Line endX="161.0" layoutX="271.0" layoutY="54.0" startX="-153.0" />
+      <Label fx:id="permisFullPath" layoutX="77.0" layoutY="391.0" prefHeight="28.0" prefWidth="381.0" visible="false" />
    </children>
 </AnchorPane>
