@@ -88,7 +88,6 @@ public class ClientController {
 		 clearSearchLabel.setVisible(false);
 		 searchClient.setVisible(true);
 		 username.clear();
-		 System.out.println(clientRepository.getAllClients());
 		 clientObservableList.clear();
 		 clientObservableList.addAll(FXCollections.observableArrayList(clientRepository.getAllClients())); 
 		 

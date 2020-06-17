@@ -73,7 +73,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutY="436.0" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
          <children>
-          <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveClient" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
+          <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveReservation" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
             <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Réinitialiser" />
          </children>
       </HBox>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.ContartController">
+<Pane fx:id="pane" prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.ContratController">
    <children>
       <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#returnBack" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -56,7 +56,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label fx:id="searchVoiture" layoutX="653.0" layoutY="82.0">
+      <Label fx:id="searchContrat" layoutX="653.0" layoutY="82.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

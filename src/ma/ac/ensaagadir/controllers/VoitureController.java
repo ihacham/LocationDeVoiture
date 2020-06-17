@@ -102,6 +102,9 @@ public class VoitureController {
 		voitureTable.setItems(voitureObservableList);
 
 		session = ApplicationSessionSingleton.getInstance();
+		
+		edit.setDisable(true);
+		delete.setDisable(true);
 	}
 
 	public static ObservableList<Voiture> getVoitureObservableList() {

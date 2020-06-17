@@ -15,6 +15,7 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import ma.ac.ensaagadir.dao.ParkingRepository;
 import ma.ac.ensaagadir.dao.VoitureRepository;
 import ma.ac.ensaagadir.models.Parking;
@@ -61,6 +62,7 @@ public class AddVoitureController {
     @FXML
     private void initialize() {
     	voitureRepository = new VoitureRepository();
+    	parkingRepository = new ParkingRepository();
     	carburantCombo.setItems(FXCollections.observableArrayList("Diesel", "Essence", "Carburant gazeux"));
     	disponiblite.setSelected(true);
     	disponiblite.setDisable(true);
@@ -112,6 +114,9 @@ public class AddVoitureController {
     		
     		} catch (SQLException e) {
     			e.printStackTrace();
+    			
+    		} finally {
+    			((Stage)type.getScene().getWindow()).close();
     		}
     		
     }

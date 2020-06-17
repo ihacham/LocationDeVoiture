@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import ma.ac.ensaagadir.dao.ClientRepository;
 import ma.ac.ensaagadir.dao.ReservationRepository;
 import ma.ac.ensaagadir.dao.VoitureRepository;
@@ -107,7 +108,7 @@ public class AddReservationController {
     }
 
     @FXML
-    void saveClient(ActionEvent event) {
+    void saveReservation(ActionEvent event) {
     	try {
     		Reservation reservation= new Reservation();
     		
@@ -122,7 +123,10 @@ public class AddReservationController {
     		
     		} catch (SQLException e) {
     			e.printStackTrace();
+    		} finally {
+    			((Stage)dateDepart.getScene().getWindow()).close();
     		}
+    	
     		
     }
     

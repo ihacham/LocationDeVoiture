@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="H:/Libraries JAR/mysql-connector-java-5.1.49.tar/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar"/>
-=======
-	<classpathentry kind="lib" path="C:/Users/User/Downloads/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar"/>
->>>>>>> aa6fa45923d59c7aaa8492bc5f043c00a1bb505c
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,10 +1,6 @@
 package ma.ac.ensaagadir.controllers;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -119,8 +115,6 @@ public class AddClientController implements Initializable {
 		telephone.setText("");
 		age.setText("");
 		permisFilename.setText("");
-		
-		
 	}
 
 }

@@ -3,6 +3,7 @@ package ma.ac.ensaagadir.utils;
 import java.io.File;
 
 import ma.ac.ensaagadir.models.Client;
+import ma.ac.ensaagadir.models.Contrat;
 import ma.ac.ensaagadir.models.Reservation;
 import ma.ac.ensaagadir.models.Voiture;
 
@@ -13,6 +14,11 @@ public class ApplicationSession {
 	private Voiture selectedVoiture;
 	
 	private Reservation selectedReservation;
+	
+	private Contrat selectedContrat;
+	
+	
+	
 	
 	public String getAppFolder() {
 		
@@ -49,6 +55,16 @@ public class ApplicationSession {
 
 	public void setSelectedVoiture(Voiture selectedVoiture) {
 		this.selectedVoiture = selectedVoiture;
+	}
+
+	
+	
+	public Contrat getSelectedContrat() {
+		return selectedContrat;
+	}
+
+	public void setSelectedContrat(Contrat selectedContrat) {
+		this.selectedContrat = selectedContrat;
 	}
 
 	public ApplicationSession() {
