@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.ContartController">
+   <children>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#returnBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/back.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="340.0" layoutY="84.0" text="numéro de Contrat :" />
+      <TextField fx:id="codeContratInput" layoutX="455.0" layoutY="80.0" onKeyReleased="#searchContrat" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
+      <TableView fx:id="contratTable" layoutY="137.0" onMouseClicked="#tableClick" prefHeight="337.0" prefWidth="1013.0">
+         <columns>
+            <TableColumn fx:id="numeroContrat" prefWidth="119.0" text="n°Contrat" />
+            <TableColumn fx:id="codeReservation" prefWidth="176.0" text="Code réservation" />
+            <TableColumn fx:id="numeroFacture" prefWidth="186.0" text="n°Facture" />
+            <TableColumn fx:id="dateContrat" prefWidth="211.0" text="Date contrat" />
+            <TableColumn fx:id="dateEcheance" prefWidth="210.0" text="Date d'échance" />
+            <TableColumn prefWidth="110.0" text="Signée" />
+         </columns>
+      </TableView>
+      <Button fx:id="edit" layoutX="393.0" layoutY="529.0" mnemonicParsing="false" onAction="#showEditContrat" prefHeight="31.0" prefWidth="110.0" text="Modifier">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="100.0" layoutY="529.0" mnemonicParsing="false" onAction="#showAddContrat" prefHeight="31.0" prefWidth="110.0" text="Ajouter">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="delete" layoutX="682.0" layoutY="529.0" mnemonicParsing="false" onAction="#showDeleteContrat" prefHeight="31.0" prefWidth="110.0" text="Supprimer">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="34.0" layoutY="14.0" onMouseClicked="#returnBack" text="Retour à l'acceuil" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="searchVoiture" layoutX="653.0" layoutY="82.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label fx:id="clearSearchLabel" layoutX="655.0" layoutY="85.0" onMouseClicked="#clearSearch" visible="false">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../resources/close.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+      </Label>
+   </children>
+</Pane>

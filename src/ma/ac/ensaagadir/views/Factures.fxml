@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.VoitureController">
+<Pane prefHeight="600.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.ac.ensaagadir.controllers.FactureController">
    <children>
       <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="2.0" layoutY="2.0" onMouseClicked="#returnBack" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,27 +21,28 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label layoutX="329.0" layoutY="84.0" text="Numéro du Parking :" />
-      <TextField fx:id="codeVoitureInput" layoutX="455.0" layoutY="80.0" onKeyReleased="#searchReservation" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
-      <TableView fx:id="voitureTable" layoutY="137.0" onMouseClicked="#tableClick" prefHeight="337.0" prefWidth="1013.0">
+      <Label layoutX="347.0" layoutY="84.0" text="Numéro Facture :" />
+      <TextField fx:id="codeFactureInput" layoutX="455.0" layoutY="80.0" onKeyReleased="#searchReservation" prefHeight="25.0" prefWidth="218.0" promptText="Effectuer une recherche..." />
+      <TableView fx:id="factureTable" layoutY="137.0" onMouseClicked="#tableClick" prefHeight="337.0" prefWidth="1013.0">
          <columns>
-            <TableColumn fx:id="numParking" prefWidth="139.0" text="n°Parking" />
-            <TableColumn fx:id="capacite" prefWidth="206.0" text="Capacité" />
-            <TableColumn fx:id="rue" prefWidth="303.0" text="Rue" />
-            <TableColumn fx:id="Arrondissement" prefWidth="364.0" text="Arrondissement" />
+            <TableColumn fx:id="numeroFacture" prefWidth="165.0" text="n°Facture" />
+            <TableColumn fx:id="numeroContrat" prefWidth="195.0" text="n°Contrat" />
+            <TableColumn fx:id="dateFacture" prefWidth="225.0" text="Date de facture" />
+            <TableColumn fx:id="montantAPaye" prefWidth="291.0" text="Montant à payé" />
+            <TableColumn fx:id="etat" prefWidth="136.0" text="Réglée" />
          </columns>
       </TableView>
-      <Button fx:id="edit" layoutX="393.0" layoutY="529.0" mnemonicParsing="false" onAction="#showEditParking" prefHeight="31.0" prefWidth="110.0" text="Modifier">
+      <Button fx:id="edit" layoutX="393.0" layoutY="529.0" mnemonicParsing="false" onAction="#showEditFacture" prefHeight="31.0" prefWidth="110.0" text="Modifier">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="100.0" layoutY="529.0" mnemonicParsing="false" onAction="#showAddParking" prefHeight="31.0" prefWidth="110.0" text="Ajouter">
+      <Button layoutX="100.0" layoutY="529.0" mnemonicParsing="false" onAction="#showAddFacture" prefHeight="31.0" prefWidth="110.0" text="Ajouter">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="delete" layoutX="682.0" layoutY="529.0" mnemonicParsing="false" onAction="#showDeleteParking" prefHeight="31.0" prefWidth="110.0" text="Supprimer">
+      <Button fx:id="delete" layoutX="682.0" layoutY="529.0" mnemonicParsing="false" onAction="#showDeleteFacture" prefHeight="31.0" prefWidth="110.0" text="Supprimer">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
