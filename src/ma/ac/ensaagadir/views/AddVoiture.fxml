@@ -104,7 +104,7 @@
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="540.0" spacing="60.0">
                <children>
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveVoiture" prefHeight="30.0" prefWidth="150.0" text="Ajouter" />
-                  <Button mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" text="Réinitialiser" />
+                  <Button mnemonicParsing="false" onAction="#reset" prefHeight="25.0" prefWidth="153.0" text="Réinitialiser" />
                </children>
             </HBox>
          </children>
