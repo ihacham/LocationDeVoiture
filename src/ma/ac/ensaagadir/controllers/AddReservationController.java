@@ -113,7 +113,7 @@ public class AddReservationController {
     		Reservation reservation= new Reservation();
     		
     		reservation.setClient(clients.stream().filter(c -> c.getCodeClient() == comboClient.getValue()).findFirst().get());
-    		reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue()).findFirst().get());
+    		reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation().equals(comboVoiture.getValue())).findFirst().get());
     		reservation.setDateReservation(dateReservation.getValue());
     		reservation.setDateDepart(dateDepart.getValue());
     		reservation.setDateRetour(dateRetour.getValue());

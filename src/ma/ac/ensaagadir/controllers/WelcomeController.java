@@ -1,16 +1,22 @@
 package ma.ac.ensaagadir.controllers;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class WelcomeController {
 
@@ -84,8 +90,24 @@ public class WelcomeController {
     }
 
     @FXML
-    void logout(MouseEvent event) {
+    void logout(MouseEvent event) throws IOException {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation De Déconnexion");
+		alert.setHeaderText("Vous allez se déconnecter");
+		alert.setContentText("êtes vous sûr ?");
 
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			Stage stage = (Stage) mainpane.getScene().getWindow();
+			Pane root = FXMLLoader.load(getClass().getResource("../views/login.fxml"));
+			Scene scene = new Scene(root,1000,600);
+			stage.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());			
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.show();
+			
+		}
     }
 
     @FXML

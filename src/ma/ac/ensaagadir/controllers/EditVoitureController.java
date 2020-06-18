@@ -59,7 +59,7 @@ public class EditVoitureController {
         voitureRepository = new VoitureRepository();
         
         voiture = ApplicationSessionSingleton.getInstance().getSelectedVoiture();
-
+        System.out.println(voiture.getNumImmatriculation());
         parkings = parkingRepository.getAllParkings();
     	ArrayList<Long> idParkingList= new ArrayList<>();
     	for(Parking parking : parkings) {
@@ -84,7 +84,7 @@ public class EditVoitureController {
     
     
     @FXML
-    void saveClient(ActionEvent event) {
+    void saveVoiture(ActionEvent event) {
     	try {
     		
     		voiture.setNumParking(parkings.stream().filter(p -> p.getNumParking() == parkingCombo.getValue()).findFirst().get());

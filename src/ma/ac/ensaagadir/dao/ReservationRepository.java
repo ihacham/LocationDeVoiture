@@ -41,6 +41,20 @@ public class ReservationRepository {
 				Reservation.setDateReservation(rs.getDate(7).toLocalDate());
 				Reservation.setDateDepart(rs.getDate(8).toLocalDate());
 				Reservation.setDateRetour(rs.getDate(9).toLocalDate());
+				
+				ps = connection.prepareStatement("select * from Client where codeClient = ?");
+				Client client = Reservation.getClient();
+				ps.setLong(1, client.getCodeClient());
+				ResultSet result = ps.executeQuery();
+				while (result.next()) {
+					client.setNom(result.getString(2));
+					client.setPrenom(result.getString(3));
+					client.setAdresse(result.getString(4));
+					client.setImageScanneeDPermis(result.getString(5));
+					client.setTel(result.getString(6));
+					client.setAge(result.getInt(7));
+				}
+				
 				Reservations.add(Reservation);
 				
 			}
@@ -101,15 +115,15 @@ public class ReservationRepository {
 	public Reservation addReservation(Reservation nvReservation) throws SQLException {
 
 		PreparedStatement ps = connection.prepareStatement(
-				"insert into Reservation(etat,	numImmatriculation,	codeRestitution,	numContrat,	codeClient,	dateReservation,	dateDepart,	dateRetour) values (?,?,?,?,?,?,?,?)");
+				"insert into Reservation(etat,	numImmatriculation,	codeRestitution,	codeClient,	dateReservation,	dateDepart,	dateRetour) values (?,?,?,?,?,?,?)");
 		ps.setString(1, nvReservation.getEtat());
 		ps.setString(2, nvReservation.getVoiture().getNumImmatriculation());
 		ps.setLong(3, nvReservation.getRestitution().getCodeRestitution());
-		ps.setLong(4, nvReservation.getContrat().getNumContrat());
-		ps.setLong(5, nvReservation.getClient().getCodeClient());
-		ps.setDate(6, java.sql.Date.valueOf(nvReservation.getDateReservation()));
-		ps.setDate(7, java.sql.Date.valueOf(nvReservation.getDateDepart()));
-		ps.setDate(8, java.sql.Date.valueOf(nvReservation.getDateRetour()));
+		//ps.setLong(4, null);
+		ps.setLong(4, nvReservation.getClient().getCodeClient());
+		ps.setDate(5, java.sql.Date.valueOf(nvReservation.getDateReservation()));
+		ps.setDate(6, java.sql.Date.valueOf(nvReservation.getDateDepart()));
+		ps.setDate(7, java.sql.Date.valueOf(nvReservation.getDateRetour()));
 		int rs = ps.executeUpdate();
 
 		ps = connection.prepareStatement("SELECT LAST_INSERT_ID()");

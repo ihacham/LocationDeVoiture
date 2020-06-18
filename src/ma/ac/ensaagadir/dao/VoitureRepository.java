@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import ma.ac.ensaagadir.models.Parking;
 import ma.ac.ensaagadir.models.Voiture;
 import ma.ac.ensaagadir.utils.SingletonConnection;
 
@@ -30,13 +32,27 @@ public class VoitureRepository {
 				// numImmatriculation numParking marque type carburant compteurDeKM dateDeMiseEnCirculation disponible
 				Voiture voiture = new Voiture();
 				voiture.setNumImmatriculation(rs.getString(1));				
-				voiture.getParking().setNumParking(rs.getLong(2));
+				//voiture.getParking().setNumParking(rs.getLong(2));
 				voiture.setMarque(rs.getString(3));
 				voiture.setType(rs.getString(4));
 				voiture.setCarburant(rs.getString(5));
 				voiture.setCompteurDeKM(rs.getDouble(6));
 				voiture.setDateDeMiseEnCirculation(rs.getDate(7).toLocalDate());
 				voiture.setDisponibility(rs.getBoolean(8));
+				
+				
+				ps = connection.prepareStatement("select * from parking where numParking = ?");
+				ps.setLong(1,rs.getLong(2));
+				ResultSet result = ps.executeQuery();
+				
+				while(result.next()) {
+					Parking parking = new Parking();
+					parking.setNumParking(result.getLong(1));
+					parking.setCapacite(result.getLong(3));
+					parking.setRue(result.getString(4));
+					parking.setArrondissement(result.getString(5));
+					voiture.setNumParking(parking);
+				}
 				voitures.add(voiture);
 				
 			}
@@ -58,14 +74,26 @@ public class VoitureRepository {
 			while (rs.next()) {
 				// numImmatriculation numParking marque type carburant compteurDeKM dateDeMiseEnCirculation disponible
 				Voiture voiture = new Voiture();
-				voiture.setNumImmatriculation(rs.getString(1));				
-				voiture.getParking().setNumParking(rs.getLong(2));
+				voiture.setNumImmatriculation(rs.getString(1));		
 				voiture.setMarque(rs.getString(3));
 				voiture.setType(rs.getString(4));
 				voiture.setCarburant(rs.getString(5));
 				voiture.setCompteurDeKM(rs.getDouble(6));
 				voiture.setDateDeMiseEnCirculation(rs.getDate(7).toLocalDate());
 				voiture.setDisponibility(rs.getBoolean(8));
+				
+				ps = connection.prepareStatement("select * from parking where numParking = ?");
+				ps.setLong(1,rs.getLong(2));
+				ResultSet result = ps.executeQuery();
+				
+				while(result.next()) {
+					Parking parking = new Parking();
+					parking.setNumParking(result.getLong(1));
+					parking.setCapacite(result.getLong(3));
+					parking.setRue(result.getString(4));
+					parking.setArrondissement(result.getString(5));
+					voiture.setNumParking(parking);
+				}
 				voitures.add(voiture);
 				
 			}
@@ -80,23 +108,18 @@ public class VoitureRepository {
 	public Voiture addVoiture(Voiture nvVoiture) throws SQLException {
 
 		PreparedStatement ps = connection.prepareStatement(
-				"insert into Voiture(numParking, marque, type, carburant, compteurDeKM, dateDeMiseEnCirculation, disponible) values (?,?,?,?,?,?,?)");
-		ps.setLong(1, nvVoiture.getParking().getNumParking());
-		ps.setString(2, nvVoiture.getMarque());
-		ps.setString(3, nvVoiture.getType());
-		ps.setString(4, nvVoiture.getCarburant());
-		ps.setDouble(5, nvVoiture.getCompteurDeKM());
-		ps.setDate(6, java.sql.Date.valueOf(nvVoiture.getDateDeMiseEnCirculation()));
-		ps.setBoolean(6, nvVoiture.getDisponibility());
+				"insert into Voiture(numImmatriculation,numParking, marque, type, carburant, compteurDeKM, dateDeMiseEnCirculation, disponible) values (?,?,?,?,?,?,?,?)");
+		ps.setString(1, nvVoiture.getNumImmatriculation());
+		ps.setLong(2, nvVoiture.getParking().getNumParking());
+		ps.setString(3, nvVoiture.getMarque());
+		ps.setString(4, nvVoiture.getType());
+		ps.setString(5, nvVoiture.getCarburant());
+		ps.setDouble(6, nvVoiture.getCompteurDeKM());
+		ps.setDate(7, java.sql.Date.valueOf(nvVoiture.getDateDeMiseEnCirculation()));
+		ps.setBoolean(8, nvVoiture.getDisponibility());
 		
 		int rs = ps.executeUpdate();
 
-		ps = connection.prepareStatement("SELECT LAST_INSERT_ID()");
-		ResultSet result = ps.executeQuery();
-		
-		while(result.next()) {
-			nvVoiture.setNumImmatriculation(result.getString(1));
-		}
 		
 		return nvVoiture;
 	}
@@ -113,9 +136,9 @@ public class VoitureRepository {
 		ps.setString(4, nvVoiture.getCarburant());
 		ps.setDouble(5, nvVoiture.getCompteurDeKM());
 		ps.setDate(6, java.sql.Date.valueOf(nvVoiture.getDateDeMiseEnCirculation()));
-		ps.setBoolean(6, nvVoiture.getDisponibility());
+		ps.setBoolean(7, nvVoiture.getDisponibility());
 
-		ps.setString(7, nvVoiture.getNumImmatriculation());
+		ps.setString(8, nvVoiture.getNumImmatriculation());
 		int rs = ps.executeUpdate();
 
 	}

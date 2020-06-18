@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane prefHeight="600.0" prefWidth="1013.0" style="-fx-background-color: #EEEEEE;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <HBox alignment="CENTER" layoutX="36.0" layoutY="29.0" prefHeight="79.0" prefWidth="947.0" spacing="42.0">
+         <children>
+            <HBox prefHeight="79.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <effect>
+                        <DropShadow color="#000000bc" height="10.62" radius="6.664999999999999" spread="0.1" width="18.04" />
+                     </effect>
+                     <children>
+                        <Pane layoutX="15.0" layoutY="-23.0" prefHeight="70.0" prefWidth="74.0" style="-fx-background-color: #FFD54F;">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="17.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../resources/revenue.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow height="3.21" radius="1.105" spread="1.0" width="3.21" />
+                           </effect>
+                        </Pane>
+                        <Text fill="#a4a2a2" layoutX="89.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revenue" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#5b5858" layoutX="91.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20000 DH" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <effect>
+                        <DropShadow color="#000000bc" height="10.62" radius="6.664999999999999" spread="0.1" width="18.04" />
+                     </effect>
+                     <children>
+                        <Pane layoutX="15.0" layoutY="-23.0" prefHeight="70.0" prefWidth="74.0" style="-fx-background-color: #f44336;">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="17.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../resources/client.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow height="3.21" radius="1.105" spread="1.0" width="3.21" />
+                           </effect>
+                        </Pane>
+                        <Text fill="#a4a2a2" layoutX="89.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#5b5858" layoutX="91.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="206" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <effect>
+                        <DropShadow color="#000000bc" height="10.62" radius="6.664999999999999" spread="0.1" width="18.04" />
+                     </effect>
+                     <children>
+                        <Pane layoutX="15.0" layoutY="-23.0" prefHeight="70.0" prefWidth="74.0" style="-fx-background-color: #26A69A;">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="17.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../resources/reservation.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow height="1.605" radius="0.0" width="0.0" />
+                           </effect>
+                        </Pane>
+                        <Text fill="#a4a2a2" layoutX="89.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservations" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#5b5858" layoutX="91.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox prefHeight="79.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <effect>
+                        <DropShadow color="#000000bc" height="10.62" radius="6.664999999999999" spread="0.1" width="18.04" />
+                     </effect>
+                     <children>
+                        <Pane layoutX="15.0" layoutY="-23.0" prefHeight="70.0" prefWidth="74.0" style="-fx-background-color: #448AFF;">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="18.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../resources/sanction.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow height="3.21" radius="1.105" spread="1.0" width="3.21" />
+                           </effect>
+                        </Pane>
+                        <Text fill="#a4a2a2" layoutX="89.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sanctions" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#5b5858" layoutX="91.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="107.9999743103981">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</Pane>

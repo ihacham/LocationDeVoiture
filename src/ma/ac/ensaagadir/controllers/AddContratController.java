@@ -30,7 +30,7 @@ public class AddContratController {
 	private ComboBox<Long> comboReservation;
 
 	@FXML
-	private ComboBox<String> comboFacture;
+	private ComboBox<Long> comboFacture;
 
 	@FXML
 	private DatePicker dateContrat;
@@ -62,7 +62,7 @@ public class AddContratController {
 		contratRepository = new ContratRepository();
 		
 		factures = factureRepository.getAllFactures();
-		ArrayList<String> numFactures = (ArrayList<String>) factures.stream().map(f -> f.getNumFacture()).collect(Collectors.toList());
+		ArrayList<Long> numFactures = (ArrayList<Long>) factures.stream().map(f -> f.getNumFacture()).collect(Collectors.toList());
 		comboFacture.setItems(FXCollections.observableList(numFactures));
 		
 		

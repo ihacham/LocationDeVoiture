@@ -46,8 +46,8 @@ public class ContratRepository {
 
 				while (result.next()) {					
 					Facture facture = new Facture();
-					facture.setNumFacture(result.getString(1));
-					facture.getContrat().setNumContrat(result.getLong(2));
+					facture.setNumFacture(result.getLong(1));
+					//facture.getContrat().setNumContrat(result.getLong(2));
 					facture.setDateDeFacture(result.getDate(3).toLocalDate());
 					facture.setMontantAPaye(result.getDouble(4));
 					
@@ -114,8 +114,8 @@ public class ContratRepository {
 
 				while (result.next()) {					
 					Facture facture = new Facture();
-					facture.setNumFacture(result.getString(1));
-					facture.getContrat().setNumContrat(result.getLong(2));
+					facture.setNumFacture(result.getLong(1));
+					//facture.getContrat().setNumContrat(result.getLong(2));
 					facture.setDateDeFacture(result.getDate(3).toLocalDate());
 					facture.setMontantAPaye(result.getDouble(4));
 					
@@ -158,7 +158,7 @@ public class ContratRepository {
 		PreparedStatement ps = connection
 				.prepareStatement("insert into Contrat(codeReservation,	numFacture,	dateContrat, dateEcheance, isSigned) values (?,?,?,?,?)");
 		ps.setLong(1, nvContrat.getReservation().getCodeReservation());
-		ps.setString(2, nvContrat.getFacture().getNumFacture());
+		ps.setLong(2, nvContrat.getFacture().getNumFacture());
 		ps.setDate(3, java.sql.Date.valueOf(nvContrat.getDateContrat()));
 		ps.setDate(4, java.sql.Date.valueOf(nvContrat.getDateEcheance()));
 		ps.setBoolean(5,nvContrat.getIsSigned());
@@ -180,7 +180,7 @@ public class ContratRepository {
 		PreparedStatement ps = connection
 				.prepareStatement("update Contrat set codeReservation=?,	numFacture=?,	dateContrat=?, dateEcheance=?, isSigned=? where numContrat=?");
 		ps.setLong(1, nvContrat.getReservation().getCodeReservation());
-		ps.setString(2, nvContrat.getFacture().getNumFacture());
+		ps.setLong(2, nvContrat.getFacture().getNumFacture());
 		ps.setDate(3, java.sql.Date.valueOf(nvContrat.getDateContrat()));
 		ps.setDate(4, java.sql.Date.valueOf(nvContrat.getDateEcheance()));
 		ps.setBoolean(5,nvContrat.getIsSigned());

@@ -51,7 +51,7 @@ public class ContratController {
     private TableColumn<Contrat, Long> codeReservation;
 
     @FXML
-    private TableColumn<Contrat, String> numeroFacture;
+    private TableColumn<Contrat, Long> numeroFacture;
 
     @FXML
     private TableColumn<Contrat, LocalDate> dateContrat;
@@ -88,7 +88,7 @@ public class ContratController {
 		
 		numeroContrat.setCellValueFactory(cellData -> cellData.getValue().NumContrat().asObject());
 		codeReservation.setCellValueFactory(cellData -> cellData.getValue().Reservation().get().CodeReservation().asObject());
-		numeroFacture.setCellValueFactory(cellData -> cellData.getValue().Facture().get().NumFacture());
+		numeroFacture.setCellValueFactory(cellData -> cellData.getValue().Facture().get().NumFacture().asObject());
 		dateContrat.setCellValueFactory(cellData -> cellData.getValue().DateContrat());
 		dateEcheance.setCellValueFactory(cellData -> cellData.getValue().DateEcheance());
 		

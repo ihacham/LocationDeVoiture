@@ -4,6 +4,7 @@ import java.io.File;
 
 import ma.ac.ensaagadir.models.Client;
 import ma.ac.ensaagadir.models.Contrat;
+import ma.ac.ensaagadir.models.Facture;
 import ma.ac.ensaagadir.models.Reservation;
 import ma.ac.ensaagadir.models.Voiture;
 
@@ -17,7 +18,7 @@ public class ApplicationSession {
 	
 	private Contrat selectedContrat;
 	
-	
+	private Facture selectedFacture;
 	
 	
 	public String getAppFolder() {
@@ -27,6 +28,16 @@ public class ApplicationSession {
 	
 	public String getPermisImagesFolder() {
 		return getAppFolder() + File.separator + "PermisImages";
+	}
+
+	
+	
+	public Facture getSelectedFacture() {
+		return selectedFacture;
+	}
+
+	public void setSelectedFacture(Facture selectedFacture) {
+		this.selectedFacture = selectedFacture;
 	}
 
 	public Client getSelectedClient() {

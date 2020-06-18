@@ -114,10 +114,8 @@ public class ReservationController {
     	 clearSearchLabel.setVisible(false);
 		 searchReservation.setVisible(true);
 		 codeReservationInput.clear();
-		 System.out.println(reservationRepository.getAllReservations());
 		 reservationObservableList.clear();
 		 reservationObservableList.addAll(FXCollections.observableArrayList(reservationRepository.getAllReservations())); 
-		 
     }
 
     @FXML

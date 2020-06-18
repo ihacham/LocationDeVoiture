@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class Facture {
-	private StringProperty numFacture;
+	private LongProperty numFacture;
 	private ObjectProperty<Contrat> contrat;
 	private ObjectProperty<LocalDate> dateDeFacture;
 	private DoubleProperty montantAPaye;
@@ -22,7 +22,7 @@ public class Facture {
 	
 	public Facture() {
 		super();
-		// TODO Auto-generated constructor stub
+		//contrat = new SimpleObjectProperty<>(new Contrat());
 	}
 	public Facture( LocalDate dateDeFacture, double montantAPaye) {
 		super();
@@ -41,14 +41,14 @@ public class Facture {
 	public void setIsPayed(Boolean isPayed) {
 		this.isPayed = new SimpleBooleanProperty(isPayed);
 	}
-	public String getNumFacture() {
+	public Long getNumFacture() {
 		return numFacture.get();
 	}
-	public StringProperty NumFacture() {
+	public LongProperty NumFacture() {
 		return numFacture;
 	}
-	public void setNumFacture(String numFacture) {
-		this.numFacture = new SimpleStringProperty(numFacture);
+	public void setNumFacture(Long numFacture) {
+		this.numFacture = new SimpleLongProperty(numFacture);
 	}
 	public Contrat getContrat() {
 		return contrat.get();

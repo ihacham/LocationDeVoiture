@@ -88,7 +88,7 @@ public class ParkingRepository {
 				while (result.next()) {
 					Voiture voiture = new Voiture();
 					voiture.setNumImmatriculation(result.getString(1));
-					voiture.getParking().setNumParking(result.getLong(2));
+					voiture.setNumParking(parking);
 					voiture.setMarque(result.getString(3));
 					voiture.setType(result.getString(4));
 					voiture.setCarburant(result.getString(5));

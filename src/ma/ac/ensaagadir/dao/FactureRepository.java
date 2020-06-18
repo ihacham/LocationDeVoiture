@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ma.ac.ensaagadir.models.Contrat;
 import ma.ac.ensaagadir.models.Facture;
 import ma.ac.ensaagadir.utils.SingletonConnection;
 
@@ -19,7 +20,7 @@ public class FactureRepository {
 	}
 
 	// search facture by name
-	public ArrayList<Facture> getFactureByNum(String num) {
+	public ArrayList<Facture> getFactureByNum(Long num) {
 		ArrayList<Facture> factures = new ArrayList<>();
 		 
 		try {
@@ -31,11 +32,26 @@ public class FactureRepository {
 			while (rs.next()) {
 				// numFacture, numContrat, dateDeFacture, montantAPaye, isPayed
 				Facture facture = new Facture();
-				ps.setString(1, facture.getNumFacture());
-				ps.setLong(2, facture.getContrat().getNumContrat());
-				ps.setDate(3, java.sql.Date.valueOf(facture.getDateDeFacture()));
-				ps.setDouble(4, facture.getMontantAPaye());
-				ps.setBoolean(5, facture.getIsPayed());
+				facture.setNumFacture(rs.getLong(1));
+				facture.setDateDeFacture(rs.getDate(3).toLocalDate());
+				facture.setMontantAPaye(rs.getDouble(4));
+				facture.setIsPayed(rs.getBoolean(5));
+				
+				/*
+				ps = connection.prepareStatement("select * from contrat where numFacture=?");
+				ps.setLong(1, facture.getNumFacture());
+				ResultSet result = ps.executeQuery();
+				
+				while(result.next()) {
+					//numContrat	codeReservation	numFacture	dateContrat	dateEcheance	isSigned
+					Contrat contrat = new Contrat();
+					contrat.setNumContrat(result.getLong(1));
+					contrat.setDateContrat(result.getDate(4).toLocalDate());
+					contrat.setDateEcheance(result.getDate(5).toLocalDate());
+					contrat.setIsSigned(result.getBoolean(6));
+					facture.setContrat(contrat);
+				}
+				*/
 				factures.add(facture);
 				
 			}
@@ -59,11 +75,25 @@ public class FactureRepository {
 			while (rs.next()) {
 				// numFacture, numContrat, dateDeFacture, montantAPaye, isPayed
 				Facture facture = new Facture();
-				ps.setString(1, facture.getNumFacture());
-				ps.setLong(2, facture.getContrat().getNumContrat());
-				ps.setDate(3, java.sql.Date.valueOf(facture.getDateDeFacture()));
-				ps.setDouble(4, facture.getMontantAPaye());
-				ps.setBoolean(5, facture.getIsPayed());
+				facture.setNumFacture(rs.getLong(1));
+				facture.setDateDeFacture(rs.getDate(3).toLocalDate());
+				facture.setMontantAPaye(rs.getDouble(4));
+				facture.setIsPayed(rs.getBoolean(5));
+				/*
+				ps = connection.prepareStatement("select * from contrat where numFacture=?");
+				ps.setLong(1, facture.getNumFacture());
+				ResultSet result = ps.executeQuery();
+				
+				while(result.next()) {
+					//numContrat	codeReservation	numFacture	dateContrat	dateEcheance	isSigned
+					Contrat contrat = new Contrat();
+					contrat.setNumContrat(result.getLong(1));
+					contrat.setDateContrat(result.getDate(4).toLocalDate());
+					contrat.setDateEcheance(result.getDate(5).toLocalDate());
+					contrat.setIsSigned(result.getBoolean(6));
+					facture.setContrat(contrat);
+				}
+				*/
 				factures.add(facture);
 				
 			}
@@ -78,14 +108,21 @@ public class FactureRepository {
 	public Facture addFacture(Facture nvFacture) throws SQLException {
 		//numFacture	numContrat	dateDeFacture	montantAPaye
 		PreparedStatement ps = connection.prepareStatement(
-				"insert into Facture(numFacture, numContrat, dateDeFacture,	montantAPaye, isPayed) values (?,?,?,?,?)");
-		ps.setString(1, nvFacture.getNumFacture());
-		ps.setLong(2, nvFacture.getContrat().getNumContrat());
-		ps.setDate(3, java.sql.Date.valueOf(nvFacture.getDateDeFacture()));
-		ps.setDouble(4, nvFacture.getMontantAPaye());
-		ps.setBoolean(5, nvFacture.getIsPayed());
+				"insert into Facture(dateDeFacture,	montantAPaye, isPayed) values (?,?,?)");
+		
+		
+		ps.setDate(1, java.sql.Date.valueOf(nvFacture.getDateDeFacture()));
+		ps.setDouble(2, nvFacture.getMontantAPaye());
+		ps.setBoolean(3, nvFacture.getIsPayed());
 		
 		ps.executeUpdate();
+		
+		ps = connection.prepareStatement("SELECT LAST_INSERT_ID()");
+		ResultSet result = ps.executeQuery();
+		
+		while(result.next()) {
+			nvFacture.setNumFacture(result.getLong(1));
+		}
 		
 		return nvFacture;
 	}
@@ -94,13 +131,16 @@ public class FactureRepository {
 	public void editFacture(Facture nvFacture) throws SQLException {
 		//numFacture	numContrat	dateDeFacture	montantAPaye isPayed
 		PreparedStatement ps = connection.prepareStatement(
-				"update Facture set numContrat=?, dateDeFacture=?, montantAPaye=?, isPayed=? where numFacture=?");
-		ps.setLong(1, nvFacture.getContrat().getNumContrat());
-		ps.setDate(2, java.sql.Date.valueOf(nvFacture.getDateDeFacture()));
-		ps.setDouble(3, nvFacture.getMontantAPaye());
-		ps.setBoolean(4, nvFacture.getIsPayed());
+				"update Facture set dateDeFacture=?, montantAPaye=?, isPayed=? where numFacture=?");
+		/*if(nvFacture.getContrat() != null)
+			ps.setLong(1, nvFacture.getContrat().getNumContrat());
+		else
+			ps.setNull(1, java.sql.Types.BIGINT);*/
+		ps.setDate(1, java.sql.Date.valueOf(nvFacture.getDateDeFacture()));
+		ps.setDouble(2, nvFacture.getMontantAPaye());
+		ps.setBoolean(3, nvFacture.getIsPayed());
 		
-		ps.setString(5, nvFacture.getNumFacture());
+		ps.setLong(4, nvFacture.getNumFacture());
 
 		int rs = ps.executeUpdate();
 
@@ -110,7 +150,7 @@ public class FactureRepository {
 	public void deleteFacture(Facture nvFacture) throws SQLException {
 		//numFacture	numContrat	dateDeFacture	montantAPaye
 		PreparedStatement ps = connection.prepareStatement("delete from Facture where numFacture=?");
-		ps.setString(1, nvFacture.getNumFacture());
+		ps.setLong(1, nvFacture.getNumFacture());
 
 		int rs = ps.executeUpdate();
 

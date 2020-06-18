@@ -73,7 +73,7 @@ public class EditReservationController {
 	void saveClient(ActionEvent event) {
 		try {
 
-			reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation() == comboVoiture.getValue())
+			reservation.setVoiture(voitures.stream().filter(v -> v.getNumImmatriculation().equals(comboVoiture.getValue()))
 					.findFirst().get());
 			reservation.setDateReservation(dateReservation.getValue());
 			reservation.setDateDepart(dateDepart.getValue());

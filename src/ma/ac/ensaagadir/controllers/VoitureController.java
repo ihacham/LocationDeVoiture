@@ -116,7 +116,6 @@ public class VoitureController {
 		clearSearchLabel.setVisible(false);
 		searchVoiture.setVisible(true);
 		codeVoitureInput.clear();
-		System.out.println(voitureRepository.getAllVoitures());
 		voitureObservableList.clear();
 		voitureObservableList.addAll(FXCollections.observableArrayList(voitureRepository.getAllVoitures()));
 	}
@@ -179,7 +178,7 @@ public class VoitureController {
 		if (result.get() == ButtonType.OK) {
 			try {
 				voitureRepository.deleteVoiture(session.getSelectedVoiture());
-				voitureObservableList.remove(session.getSelectedReservation());
+				voitureObservableList.remove(session.getSelectedVoiture());
 			} catch (SQLException e) {
 				Alert error = new Alert(AlertType.ERROR);
 				error.setTitle("Erreur Suppression de Voiture");
@@ -215,7 +214,7 @@ public class VoitureController {
 			editVoitureStage.show();
 
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
 	}
 

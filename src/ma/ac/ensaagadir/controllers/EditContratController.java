@@ -31,7 +31,7 @@ public class EditContratController {
 	private ComboBox<Long> comboReservation;
 
 	@FXML
-	private ComboBox<String> comboFacture;
+	private ComboBox<Long> comboFacture;
 
 	@FXML
 	private DatePicker dateContrat;
@@ -64,7 +64,7 @@ public class EditContratController {
 		contratRepository = new ContratRepository();
 		
 		factures = factureRepository.getAllFactures();
-		ArrayList<String> numFactures = (ArrayList<String>) factures.stream().map(f -> f.getNumFacture()).collect(Collectors.toList());
+		ArrayList<Long> numFactures = (ArrayList<Long>) factures.stream().map(f -> f.getNumFacture()).collect(Collectors.toList());
 		comboFacture.setItems(FXCollections.observableList(numFactures));
 		
 		
@@ -93,8 +93,10 @@ public class EditContratController {
     		contrat.setDateContrat(dateContrat.getValue());
     		contrat.setIsSigned(contratSignee.isSelected());
     		
+    		contratRepository.editContrat(contrat);
+    		int index = ContratController.getContratObservableList().indexOf(contrat);
+    		ContratController.getContratObservableList().set(index, contrat);
     		
-    		ContratController.getContratObservableList().addAll(contratRepository.addContrat(contrat));
     		
     		} catch (SQLException e) {
     			e.printStackTrace();
