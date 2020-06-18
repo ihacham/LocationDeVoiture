@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import ma.ac.ensaagadir.models.Utilisateur;
+import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 import ma.ac.ensaagadir.utils.SingletonConnection;
 
 public class LoginController {
@@ -40,6 +42,7 @@ public class LoginController {
 	public void connect() {
 		int count = 0;
 		String name, code, query;
+		Utilisateur user = null;
 		
 		query = "select * from utilisateur where identifiant = ? and motDePasse = ?";
 		
@@ -57,6 +60,16 @@ public class LoginController {
 			ResultSet rs =ps.executeQuery();
 			
 			while (rs.next()) {
+				//idUtilisateur	nom	prenom	tel	age	mail	identifiant	motDePasse
+				user = new Utilisateur();
+				user.setIdUtilisateur(rs.getLong(1));
+				user.setNom(rs.getString(2));
+				user.setPrenom(rs.getString(3));
+				user.setTel(rs.getString(4));
+				user.setAge(rs.getInt(5));
+				user.setMail(rs.getString(6));
+				user.setIdentifiant(rs.getString(7));
+				user.setMotDePasse(rs.getString(8));
 			    ++count;
 			}
 
@@ -65,6 +78,7 @@ public class LoginController {
 			} else if (count == 1) {
 				Stage myStage = (Stage) username.getScene().getWindow();
 				try {
+					ApplicationSessionSingleton.getInstance().setConnectedUser(user);
 					Pane root = FXMLLoader.load(getClass().getResource("../views/Welcome.fxml"));
 					Scene dashboardScene = new Scene(root,1200,670);
 					dashboardScene.getStylesheets().add(getClass().getResource("../dashboard.css").toExternalForm());

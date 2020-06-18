@@ -17,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ma.ac.ensaagadir.models.Utilisateur;
+import ma.ac.ensaagadir.utils.ApplicationSessionSingleton;
 
 public class WelcomeController {
 
@@ -25,9 +27,6 @@ public class WelcomeController {
 
     @FXML
     private ImageView logoSopra;
-
-    @FXML
-    private Label kitlabel3;
 
     @FXML
     private Label idClient;
@@ -64,18 +63,38 @@ public class WelcomeController {
 
     @FXML
     private HBox controlPane;
+    
+    @FXML
+    private Label username;
 
     @FXML
-    private ImageView minimize;
+    private Label email;
 
     @FXML
-    private ImageView exit;
+    private Label statistiquesLink;
 
     @FXML
-    void exit(MouseEvent event) {
+    private Label utilisateursLink;
 
-    }
+    
 
+    private Utilisateur connectedUser;
+    
+
+    @FXML
+    private void initialize() {
+    	connectedUser = ApplicationSessionSingleton.getInstance().getConnectedUser();
+    	
+    	if( connectedUser.getIdentifiant().equals("admin")) {
+    		statistiquesLink.setVisible(true);
+    		utilisateursLink.setVisible(true);
+    	} else {
+    		
+    	}
+    	username.setText(connectedUser.getIdentifiant());
+		email.setText(connectedUser.getMail());
+	}
+    
     @FXML
     void loadViewToMainPane(MouseEvent event) {
     	String vienName = ((Label)(event.getSource())).getText().replace("é", "e");
@@ -100,6 +119,7 @@ public class WelcomeController {
 		if (result.get() == ButtonType.OK){
 			Stage stage = (Stage) mainpane.getScene().getWindow();
 			Pane root = FXMLLoader.load(getClass().getResource("../views/login.fxml"));
+			ApplicationSessionSingleton.getInstance().setConnectedUser(null);
 			Scene scene = new Scene(root,1000,600);
 			stage.setScene(scene);
 			scene.getStylesheets().add(getClass().getResource("../application.css").toExternalForm());			
@@ -108,21 +128,6 @@ public class WelcomeController {
 			stage.show();
 			
 		}
-    }
-
-    @FXML
-    void minimize(MouseEvent event) {
-
-    }
-
-    @FXML
-    void moving(MouseEvent event) {
-
-    }
-
-    @FXML
-    void premoving(MouseEvent event) {
-
     }
 
 }

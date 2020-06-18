@@ -6,9 +6,12 @@ import ma.ac.ensaagadir.models.Client;
 import ma.ac.ensaagadir.models.Contrat;
 import ma.ac.ensaagadir.models.Facture;
 import ma.ac.ensaagadir.models.Reservation;
+import ma.ac.ensaagadir.models.Utilisateur;
 import ma.ac.ensaagadir.models.Voiture;
 
 public class ApplicationSession {
+	
+	private Utilisateur connectedUser;
 	
 	private Client selectedClient;
 	
@@ -26,6 +29,20 @@ public class ApplicationSession {
 		return System.getProperty("user.home") + File.separator + "LocationVoitureApp";
 	}
 	
+	
+	
+	public Utilisateur getConnectedUser() {
+		return connectedUser;
+	}
+
+
+
+	public void setConnectedUser(Utilisateur connectedUser) {
+		this.connectedUser = connectedUser;
+	}
+
+
+
 	public String getPermisImagesFolder() {
 		return getAppFolder() + File.separator + "PermisImages";
 	}

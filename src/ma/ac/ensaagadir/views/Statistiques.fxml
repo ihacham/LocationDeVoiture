@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane prefHeight="611.0" prefWidth="1013.0" style="-fx-background-color: #EEEEEE;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<Pane prefHeight="600.0" prefWidth="1013.0" style="-fx-background-color: #EEEEEE;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
    <children>
       <HBox alignment="CENTER" layoutX="36.0" layoutY="29.0" prefHeight="79.0" prefWidth="947.0" spacing="42.0">
          <children>
